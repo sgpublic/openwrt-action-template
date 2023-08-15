@@ -93,7 +93,7 @@ jobs:
     - name: Copy patch files
       id: patches
       run: |
-        [ -e $GITHUB_WORKSPACE/patches/* ] && cp /work/openwrt/
+        [ -e $GITHUB_WORKSPACE/patches/* ] && cp -r $GITHUB_WORKSPACE/patches/* /work/openwrt/
 
     - name: Compile the firmware
       id: compile
