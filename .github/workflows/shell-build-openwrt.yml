@@ -89,12 +89,12 @@ jobs:
         find /tmp/openwrt/download -size -1024c -exec ls -l {} \;
         find /tmp/openwrt/download -size -1024c -exec rm -f {} \;
 
-    - name: Copy patch files
-      id: patches
-      run: |
-        shopt -s nullglob
-        files=(patches/*)
-        [ ${#files[@]} -gt 0 ] && cp -r patches/* /work/openwrt/
+    # - name: Copy patch files
+    #   id: patches
+    #   run: |
+    #     shopt -s nullglob
+    #     files=(patches/*)
+    #     [ ${#files[@]} -gt 0 ] && cp -r patches/* /work/openwrt/
 
     - name: Compile the firmware
       id: compile
