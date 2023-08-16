@@ -89,7 +89,7 @@ jobs:
         find /tmp/openwrt/download -size -1024c -exec ls -l {} \;
         find /tmp/openwrt/download -size -1024c -exec rm -f {} \;
 
-     - name: Copy patch files
+    - name: Copy patch files
       id: patches
       run: |
         shopt -s nullglob
