@@ -151,7 +151,9 @@ Download_Package() {
 
 Copy_Patch_Files() {
   print_step 'Copy patch files'
-  if [[ -e "$PATCH_FILES/*" ]]; then
+  shopt -s nullglob
+  files=($PATCH_FILES/*)
+  if [ ${#files[@]} -gt 0 ]; then
     execute "cp -r $PATCH_FILES/* ./"
   else
     echo "No patch files, skip."
