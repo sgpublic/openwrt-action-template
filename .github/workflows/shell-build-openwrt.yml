@@ -20,8 +20,6 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: v23.05.0-rc2
   CONFIG_FILE: config/origin.config
   DIY_P1_SH: script/diy-part1.sh
   DIY_P2_SH: script/diy-part2.sh
@@ -53,6 +51,7 @@ jobs:
     - name: Clone source code
       run: |
         df -hT $PWD
+        . ./openwrt-detail.sh
         git clone -b $REPO_BRANCH $REPO_URL /work/openwrt
 
     - name: Load custom feeds
@@ -90,10 +89,10 @@ jobs:
         find /tmp/openwrt/download -size -1024c -exec ls -l {} \;
         find /tmp/openwrt/download -size -1024c -exec rm -f {} \;
 
-    - name: Copy patch files
-      id: patches
-      run: |
-        [ -e $GITHUB_WORKSPACE/patches/* ] && cp -r $GITHUB_WORKSPACE/patches/* /work/openwrt/
+    # - name: Copy patch files
+    #   id: patches
+    #   run: |
+    #     [ -e patches/* ] && cp -r patches/* /work/openwrt/
 
     - name: Compile the firmware
       id: compile

@@ -4,6 +4,10 @@
 
 使用此仓库模板创建您的仓库，您需要修改以下文件：
 
++ version
+
+  此文件定义你想使用的
+
 + script/diy-part1.sh
 
   此文件为自定义第一部分，主要进行插件包、主题包拉取，以及一些其他编译前准备，在 `./scripts/feeds update` 前执行。
@@ -24,7 +28,11 @@
 
   此文件为编译配置，主要定义编译时所有细节，请在使用 action 编译前，在本机使用 `make menuconfig` 完成配置之后，将 `.config` 文件内容覆盖到此文件。
 
-若您拥有其他 patch 文件，请放到 `./patches` 目录。
+您还需要执行以下操作：
+
++ 添加 TOKEN
+
+  您需要为您的仓库添加您的 GitHub Token，具体而言：Setting -> Secrets and variables -> Actions -> New repository secret，然后 Name 填写为 `TOKEN`，Secret 填写为您的 GitHub Token，关于如何生成 Token 请参阅：[管理个人访问令牌 - GitHub 文档](https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#创建-personal-access-token-classic)，您至少需要勾选：gist、repo、workflow。
 
 最后，您可以在 `Actions` 中开始编译您的固件。
 
