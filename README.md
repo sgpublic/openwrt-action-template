@@ -6,7 +6,7 @@
 
 + openwrt-detail.sh
 
-  此文件定义你想使用的
+  此文件定义你想使用的 OpenWrt 仓库源以及版本，版本可以设置为某个 tag 或者某个分支。
 
 + script/diy-part1.sh
 
